@@ -9,8 +9,8 @@ pipeline{
     parameters {
         choice(name: 'action', choices: 'create\ndelete', description: 'Select create or destroy.')
         
-        string(name: 'DOCKER_HUB_USERNAME', defaultValue: 'sevenajay', description: 'Docker Hub Username')
-        string(name: 'IMAGE_NAME', defaultValue: 'youtube', description: 'Docker Image Name')
+        string(name: 'DOCKER_HUB_USERNAME', defaultValue: 'hafizmohsinraza', description: 'Docker Hub Username')
+        string(name: 'IMAGE_NAME', defaultValue: 'youtube1', description: 'Docker Image Name')
     }
     tools{
         jdk 'jdk17'
@@ -109,7 +109,7 @@ pipeline{
     always {
         echo 'Slack Notifications'
         slackSend (
-            channel: '#devops',   #change your channel name
+            channel: '#jenkins',   #change your channel name
             color: COLOR_MAP[currentBuild.currentResult],
             message: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} \n build ${env.BUILD_NUMBER} \n More info at: ${env.BUILD_URL}"
         )
